@@ -1,8 +1,9 @@
 import './App.css';
+import { HomePage } from './page/PageExport';
 
 function App() {
   return (
-      <h1 className='text-sky-400'>Hello!!!</h1>
+      <HomePage/>
   );
 }
 
