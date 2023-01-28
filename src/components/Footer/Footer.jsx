@@ -4,9 +4,22 @@ import Instagram from "../../assets/Socials/instagram.png"
 import Linkedin from "../../assets/Socials/linkedin.png"
 import Facebook from "../../assets/Socials/facebook.png"
 
+import leafs from '../../assets/Footer/v.svg'
+import f_man from '../../assets/Footer/home_two/f_man.png'
+import cloud from '../../assets/Footer/home_two/cloud.png'
+import man from '../../assets/Footer/home_two/man.png'
+import email_icon from '../../assets/Footer/home_two/email-icon.png'
+import email_icon_two from '../../assets/Footer/home_two/email-icon_two.png'
+
 export const Footer = () => {
   return (
-    <footer ><img class="p_absolute leaf" src="img/v.svg" alt="" /><img class="p_absolute f_man wow fadeInLeft" data-wow-delay="0.4s" src="img/home_two/f_man.png" alt="" /><img class="p_absolute f_cloud" src="img/home_two/cloud.png" alt="" /><img class="p_absolute f_email" src="img/home_two/email-icon.png" alt="" /><img class="p_absolute f_email_two" src="img/home_two/email-icon_two.png" alt="" /><img class="p_absolute f_man_two wow fadeInLeft" data-wow-delay="0.2s" src="img/home_two/man.png" alt="" />
+    <footer className='relative' >
+        <img class="absolute bottom-[66px] -z-10 right-10 w-28" src={leafs} alt="" />
+        <img class="absolute bottom-[66px] -z-10 right-24 w-14" src={f_man} alt="" />
+        <img class="absolute bottom-[350px] -z-10 left-16" src={cloud} alt="" />
+        <img class="absolute bottom-[66px] left-[30px] w-[130px] -z-10" src={man} alt="" />
+        <img class="absolute bottom-[220px] left-6 -z-10" src={email_icon} alt="" />
+        <img class="absolute bottom-[150px] left-[200px] -z-10" src={email_icon_two} alt="" />
         <div class="pt-10 xs:px-4 h-[1000px] sm:h-[650px] lg:h-[440px]">
             <div class="flex flex-wrap">
                 <div class="px-4 w-screen lg:w-[33.3%]">
