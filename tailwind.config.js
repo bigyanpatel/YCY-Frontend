@@ -10,7 +10,7 @@ module.exports = {
       roboto: "Roboto,sans-serif",
     },
     screens: {
-      xs: "440px",
+      'xs': "440px",
       // => @media (min-width: 440px) { ... }
       'sm': '640px',
       // => @media (min-width: 640px) { ... }

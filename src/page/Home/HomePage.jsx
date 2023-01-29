@@ -1,8 +1,13 @@
 import React from 'react'
-import { Footer } from '../../components/ComponentExport'
+import { Footer, Header } from '../../components/ComponentExport'
 
 export const HomePage = () => {
   return (
-    <Footer/>
+    <>
+      <div className=" w-[100%] min-w-fit">
+        <Header />
+      </div>
+        <Footer/>
+    </>
   )
 }

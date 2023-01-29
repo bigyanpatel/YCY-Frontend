@@ -16,7 +16,7 @@ import { faFacebookF, faInstagram, faLinkedin, faLinkedinIn, faTwitter } from '@
 
 export const Footer = () => {
   return (
-    <footer className='relative' >
+    <footer className='relative w-screen'>
         <img class="absolute bottom-[66px] -z-10 right-10 w-28" src={leafs} alt="" />
         <img class="absolute bottom-[66px] -z-10 right-24 w-14" src={f_man} alt="" />
         <img class="absolute bottom-[350px] -z-10 left-16" src={cloud} alt="" />
