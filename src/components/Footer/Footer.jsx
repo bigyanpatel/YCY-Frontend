@@ -1,18 +1,12 @@
 import React from 'react'
-import Twitter from "../../assets/Socials/twitter.png"
-import Instagram from "../../assets/Socials/instagram.png"
-import Linkedin from "../../assets/Socials/linkedin.png"
-import Facebook from "../../assets/Socials/facebook-f.svg"
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import leafs from '../../assets/Footer/v.svg'
 import f_man from '../../assets/Footer/home_two/f_man.png'
 import cloud from '../../assets/Footer/home_two/cloud.png'
 import man from '../../assets/Footer/home_two/man.png'
 import email_icon from '../../assets/Footer/home_two/email-icon.png'
 import email_icon_two from '../../assets/Footer/home_two/email-icon_two.png'
-import { faFacebookF, faInstagram, faLinkedin, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookF, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export const Footer = () => {
   return (
@@ -30,13 +24,13 @@ export const Footer = () => {
                     <p className='font-medium text-[16px] mb-4'>Want to know about our community ! Then drop a message below. Our Team will contact you.</p>
                     <form className='relative shadow-2xl' action="#">
                         <input class="w-[100%] py-[7px] pl-[25px] pr-[12px] rounded-md outline-none" type="email" placeholder="Email" />
-                        <button class="absolute right-0 px-[22px] py-[7px] bg-[#EC6B25] rounded-md" type="submit">Send</button>
+                        <button class="absolute right-0 px-[22px] py-[7px] bg-[#EC6B25] text-white rounded-md" type="submit">Send</button>
                     </form>
                     <div className='mt-[40px] mb-[16px] flex gap-3'>
-                        <a className='hover:shadow-xl duration-300 rounded-[50%]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-[#EC6B25] border hover:bg-[#17a2b8] hover:border-none duration-300'><FontAwesomeIcon icon={faFacebookF}/></div></a>
-                        <a className='hover:shadow-xl duration-300 rounded-[50%]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-[#EC6B25] border hover:bg-[#17a2b8] hover:border-none duration-300'><FontAwesomeIcon icon={faLinkedinIn}/></div></a>
-                        <a className='hover:shadow-xl duration-300 rounded-[50%]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-[#EC6B25] border hover:bg-[#17a2b8] hover:border-none duration-300'><FontAwesomeIcon icon={faInstagram}/></div></a>
-                        <a className='hover:shadow-xl duration-300 rounded-[50%]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-[#EC6B25] border hover:bg-[#17a2b8] hover:border-none duration-300'><FontAwesomeIcon icon={faTwitter}/></div></a>
+                        <a className='hover:shadow-xl duration-300 rounded-[50%]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-[#EC6B25] border-2 hover:border-[#17a2b8] hover:bg-[#17a2b8] text-[#EC6B25] fill-current hover:text-white hover:shadow-xl duration-300'><FontAwesomeIcon icon={faFacebookF} className=''/></div></a>
+                        <a className='hover:shadow-xl duration-300 rounded-[50%]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-[#EC6B25] border-2 hover:border-[#17a2b8] hover:bg-[#17a2b8] text-[#EC6B25] fill-current hover:text-white hover:shadow-xl duration-300'><FontAwesomeIcon icon={faLinkedinIn}/></div></a>
+                        <a className='hover:shadow-xl duration-300 rounded-[50%]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-[#EC6B25] border-2 hover:border-[#17a2b8] hover:bg-[#17a2b8] text-[#EC6B25] fill-current hover:text-white hover:shadow-xl duration-300'><FontAwesomeIcon icon={faInstagram}/></div></a>
+                        <a className='hover:shadow-xl duration-300 rounded-[50%]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-[#EC6B25] border-2 hover:border-[#17a2b8] hover:bg-[#17a2b8] text-[#EC6B25] fill-current hover:text-white hover:shadow-xl duration-300'><FontAwesomeIcon icon={faTwitter}/></div></a>
                     </div>
                 </div>
                 <div class="px-4 mt-9 md:mt-0 w-screen sm:w-[50%] lg:w-[33.3%]">
