@@ -13,11 +13,11 @@ export const Signup = () => {
                 }}
                 className="w-full flex justify-center flex-col"
                 >
-                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] duration-300" type="name" placeholder="Your Name"/>
-                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] duration-300" type="email" placeholder="Your Email"/>
-                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] duration-300" type="number" placeholder="Your Contact No"/>
-                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] duration-300" type="email" placeholder="Password"/>
-                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] duration-300" type="email" placeholder="Confirm Password"/>
+                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="name" placeholder="Your Name"/>
+                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Your Email"/>
+                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="number" placeholder="Your Contact No"/>
+                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Password"/>
+                <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Confirm Password"/>
                 <button className="text-[14px] font-bold px-[15px] py-[13px] mt-[22px] mx-[30px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
                     CREATE ACCOUNT
                 </button>

@@ -15,7 +15,7 @@ export const Login = () => {
                 >
                 <div>
                     <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                    <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] duration-300" type="email" placeholder="you@example.com"/>
+                    <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="you@example.com"/>
                 </div>
                 <div class="mt-8">
                     <div class="flex justify-between items-center">
@@ -29,7 +29,7 @@ export const Login = () => {
                             </a>
                         </div>
                     </div>
-                    <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] duration-300" type="password" placeholder="Enter your password"/>
+                    <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="password" placeholder="Enter your password"/>
                 </div>
                 <button className="text-[14px] font-bold px-[20px] py-[13px] mt-[22px] mx-[82px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
                     LOG IN
