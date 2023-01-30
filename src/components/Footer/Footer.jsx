@@ -1,12 +1,12 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import leafs from '../../assets/Footer/v.svg'
 import f_man from '../../assets/Footer/home_two/f_man.png'
 import cloud from '../../assets/Footer/home_two/cloud.png'
 import man from '../../assets/Footer/home_two/man.png'
 import email_icon from '../../assets/Footer/home_two/email-icon.png'
 import email_icon_two from '../../assets/Footer/home_two/email-icon_two.png'
-import { faFacebookF, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export const Footer = () => {
   return (

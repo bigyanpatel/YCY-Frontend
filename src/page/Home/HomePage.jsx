@@ -7,7 +7,7 @@ export const HomePage = () => {
       <div className=" w-[100%] min-w-fit">
         <Header />
       </div>
-        <Footer/>
+      <Footer/>
     </>
   )
 }
