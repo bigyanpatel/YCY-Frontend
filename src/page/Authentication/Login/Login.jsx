@@ -14,22 +14,22 @@ export const Login = () => {
                 className="w-full flex justify-center flex-col"
                 >
                 <div>
-                    <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                    <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="you@example.com"/>
+                    <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
+                    <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="you@example.com"/>
                 </div>
-                <div class="mt-8">
-                    <div class="flex justify-between items-center">
-                        <div class="text-sm font-bold text-gray-700 tracking-wide">
+                <div className="mt-8">
+                    <div className="flex justify-between items-center">
+                        <div className="text-sm font-bold text-gray-700 tracking-wide">
                             Password
                         </div>
                         <div>
-                            <a class="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
+                            <a className="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
                             cursor-pointer">
                                 Forgot Password?
                             </a>
                         </div>
                     </div>
-                    <input class="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="password" placeholder="Enter your password"/>
+                    <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="password" placeholder="Enter your password"/>
                 </div>
                 <button className="text-[14px] font-bold px-[20px] py-[13px] mt-[22px] mx-[82px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
                     LOG IN
@@ -42,8 +42,8 @@ export const Login = () => {
                     <div className="w-3/6 border-t mx-1 self-center border-gray-300"></div>
                 </div>
                 </form>
-                <div class="text-sm font-display font-semibold text-gray-700 text-center">
-                    Don't have an account ? <a class="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</a>
+                <div className="text-sm font-display font-semibold text-gray-700 text-center">
+                    Don't have an account ? <a className="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</a>
                 </div>
             </div>
             <div className='absolute top-0 left-0 right-0 bottom-0 -z-10 bg-gradient-45 from-[rgb(248,123,88)] to-[rgb(251,54,0)]'>
