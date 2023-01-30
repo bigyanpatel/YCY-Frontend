@@ -30,7 +30,7 @@ export const Signup = () => {
                 </div>
                 </form>
                 <div className="text-sm font-display font-semibold text-gray-700 text-center">
-                    Already have an account ? <a className="cursor-pointer text-indigo-600 hover:text-indigo-800">Log In</a>
+                    Already have an account ? <a className="cursor-pointer text-indigo-600 hover:text-indigo-800" href='/login'>Log In</a>
                 </div>
             </div>
             <div className='absolute top-0 left-0 right-0 bottom-0 -z-10 bg-gradient-45 from-[rgb(248,123,88)] to-[rgb(251,54,0)]'>
