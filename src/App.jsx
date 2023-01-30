@@ -1,12 +1,12 @@
 import './App.css';
-import { HomePage, Login } from './page/PageExport';
+import { HomePage, Login, Signup } from './page/PageExport';
 
 
 function App() {
   return (
     <>
       {/* <HomePage/> */}
-      <Login/>
+      <Signup/>
     </>
   );
 }
