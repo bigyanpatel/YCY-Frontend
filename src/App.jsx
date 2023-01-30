@@ -1,14 +1,12 @@
 import './App.css';
-import { HomePage, Login, Signup } from './page/PageExport';
+import { AppRoutes } from './routes/AppRoutes';
 
 
 function App() {
   return (
-    <>
-      {/* <HomePage/> */}
-      <Login/>
-      {/* <Signup/> */}
-    </>
+    <div className='font-roboto'>
+      <AppRoutes/>
+    </div>
   );
 }
 
