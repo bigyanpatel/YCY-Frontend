@@ -3,8 +3,8 @@ import React from 'react'
 export const Signup = () => {
   return (
     <div className='flex p-[15px] my-[50px] justify-center items-center min-h-screen'>
-        <div className='relative h-[600px] w-[535px] overflow-hidden shadow-lg border-[rgba(251,54,0,0.54)] border'>
-            <div className='absolute left-0 flex flex-col justify-center items-center w-[320px] pt-[38px] px-[30px]'>
+        <div className='relative h-[600px] w-[535px] overflow-hidden shadow-2xl border-[rgba(251,54,0,0.54)] border'>
+            <div className='absolute left-0 flex flex-col justify-center items-center w-[320px] pt-[30px] px-[30px]'>
                 <h3 className='text-[28px] font-bold'>Sign Up</h3>
                 <hr className='w-[100%] my-[16px]'/>
                 <form
@@ -13,11 +13,11 @@ export const Signup = () => {
                 }}
                 className="w-full flex justify-center flex-col"
                 >
-                <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="name" placeholder="Your Name"/>
-                <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Your Email"/>
-                <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="number" placeholder="Your Contact No"/>
-                <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Password"/>
-                <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Confirm Password"/>
+                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="name" placeholder="Your Name"/>
+                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Your Email"/>
+                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="number" placeholder="Your Contact No"/>
+                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Password"/>
+                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Confirm Password"/>
                 <button className="text-[14px] font-bold px-[15px] py-[13px] mt-[22px] mx-[30px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
                     CREATE ACCOUNT
                 </button>

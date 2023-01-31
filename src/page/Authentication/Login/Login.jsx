@@ -3,8 +3,8 @@ import React from 'react'
 export const Login = () => {
   return (
     <div className='flex p-[15px] my-[50px] justify-center items-center min-h-screen'>
-        <div className='relative h-[600px] w-[535px] overflow-hidden shadow-lg border-[rgba(251,54,0,0.54)] border'>
-            <div className='absolute left-0 flex flex-col justify-center items-center w-[320px] pt-[38px] px-[30px]'>
+        <div className='relative h-[600px] w-[535px] overflow-hidden shadow-2xl border-[rgba(251,54,0,0.54)] border'>
+            <div className='absolute left-0 flex flex-col justify-center items-center w-[320px] pt-[30px] px-[30px]'>
                 <h3 className='text-[28px] font-bold'>Log In</h3>
                 <hr className='w-[100%] my-[16px]'/>
                 <form
@@ -15,7 +15,7 @@ export const Login = () => {
                 >
                 <div>
                     <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                    <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="you@example.com"/>
+                    <input className="w-full text-md py-3 font-bold border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="you@example.com"/>
                 </div>
                 <div className="mt-8">
                     <div className="flex justify-between items-center">
@@ -29,7 +29,7 @@ export const Login = () => {
                             </a>
                         </div>
                     </div>
-                    <input className="w-full text-lg py-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="password" placeholder="Enter your password"/>
+                    <input className="w-full text-md py-3 font-bold border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="password" placeholder="Enter your password"/>
                 </div>
                 <button className="text-[14px] font-bold px-[20px] py-[13px] mt-[22px] mx-[82px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
                     LOG IN
