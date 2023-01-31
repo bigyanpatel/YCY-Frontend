@@ -17,7 +17,7 @@ export const Footer = () => {
         <img className="absolute bottom-[66px] left-[30px] w-[130px] -z-10" src={man} alt="" />
         <img className="absolute bottom-[220px] left-6 -z-10" src={email_icon} alt="" />
         <img className="absolute bottom-[150px] left-[200px] -z-10" src={email_icon_two} alt="" />
-        <div className="pt-10 xs:px-4 h-[1000px] sm:h-[650px] lg:h-[440px]">
+        <div className="pt-10 xs:px-4 lg:pl-[150px] h-[1000px] sm:h-[650px] lg:h-[440px]">
             <div className="flex flex-wrap">
                 <div className="px-4 w-screen lg:w-[33.3%]">
                     <h3 className="font-bold text-lg pb-8">Get In Touch</h3>
