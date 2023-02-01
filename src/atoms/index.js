@@ -4,10 +4,9 @@ const AuthState = atom({
     key: "AuthState",
     default: {
         isLoading: false,
-        user: null,
-        token: '',
+        user: JSON.parse(localStorage.getItem("authData"))?.user || null,
+        token: JSON.parse(localStorage.getItem("authData"))?.token || "",
         error: '',
-        value: 0,
     }
 })
 

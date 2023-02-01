@@ -4,7 +4,20 @@ import React from 'react'
 import { HomeIcon, MagnifyingGlassIcon, QuestionMarkCircleIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { FaStickyNote, FaUserCircle } from 'react-icons/fa';
 import ycylogo from '../../assets/Images/ycylogo.png'
+import { useSetRecoilState } from 'recoil';
+import { AuthState } from '../../atoms';
+import { useNavigate } from 'react-router-dom';
+import { replace } from 'lodash';
+import { logoutHandler } from '../../features/AuthHandler';
 function Header() {
+    const setAuth = useSetRecoilState(AuthState);
+    const navigate = useNavigate()
+
+    const handleClick=() =>{
+        logoutHandler(setAuth)
+        navigate('./login')
+    }
+
     return (
         <div className='sticky top-0 flex items-center justify-center z-[1000] shadow-[2px_3px_6px_rgba(187,187,187,0.5)] p-[3px]  w-[100%]'>
             < div className='flex flex-wrap items-center justify-between' >
@@ -18,11 +31,11 @@ function Header() {
                 </div>
 
                 <div className='flex'>
-                    <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[30px] mr-[20px] max-[450px]:mr-0 max-[450px]:ml-[52px]"><HomeIcon className='w-8 h-8 text-gray-400 hover:text-black' /></div>
-                    <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0"><UserCircleIcon className='w-8 h-8 text-gray-400 hover:text-black' /></div>
+                    <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[30px] mr-[20px] max-[450px]:mr-0 max-[450px]:ml-[52px]" ><HomeIcon className='w-8 h-8 text-gray-400 hover:text-black' /></div>
+                    <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0" ><UserCircleIcon className='w-8 h-8 text-gray-400 hover:text-black' /></div>
                     <div className=" p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0"><QuestionMarkCircleIcon className='w-8 h-8 text-gray-400 hover:text-black' /></div>
                     <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0"><FaStickyNote className='w-8 h-8 text-gray-400 hover:text-black' /></div>
-                    <div className='p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[25px] mr-[20px] max-[450px]:mr-0'>< FaUserCircle className='w-8 h-8 text-gray-400 hover:text-black' /></div>
+                    <div className='p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[25px] mr-[20px] max-[450px]:mr-0' onClick={handleClick}>< FaUserCircle className='w-8 h-8 text-gray-400 hover:text-black' /></div>
                 </div>
 
             </div>

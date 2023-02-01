@@ -12,14 +12,14 @@ const [showPassword, setShowPassword] = useState({
     type: "password",
     isShow: false,
   });
-const setAuth = useSetRecoilState(AuthState);
+const [authState, setAuthState] = useRecoilState(AuthState);
 const authData = useRecoilValue(AuthState);
 const navigate = useNavigate();
 
-const handleLogin = async(data, state, setState) => {
-    const res = await loginHandler(data, state, setState);
+const handleLogin = async () =>{
+    const res = await loginHandler(loginData, authData, setAuthState)
     if(res && res.status === 200){
-        navigate('../')
+        navigate('/', {replace: true})
     }
 }
 
@@ -32,7 +32,7 @@ return (
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        handleLogin(loginData, authData, setAuth);
+                        handleLogin();
                     }}
                     className="w-full flex justify-center flex-col"
                 >

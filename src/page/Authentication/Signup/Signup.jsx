@@ -5,6 +5,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { AuthState } from '../../../atoms';
 import { useNavigate } from 'react-router-dom';
+import { replace } from 'lodash';
 
 export const Signup = () => {
     const { signupData, signupFormHandler } = useSignupForm();
@@ -18,10 +19,10 @@ export const Signup = () => {
     const setAuth = useSetRecoilState(AuthState);
     const navigate = useNavigate();
 
-    const handleSignup = async(data, state, setState) =>{
-        const res = await signupHandler(data, state, setState);
-        if(res && res.status === 200){
-            navigate('./login')
+    const handleSignup = async() =>{
+        const res = await signupHandler(signupData, authData, setAuth);
+        if(res && res.status === 201){
+            navigate('/login', {replace: true})
         }
     }
 
@@ -34,7 +35,7 @@ export const Signup = () => {
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        handleSignup(signupData,authData, setAuth);
+                        handleSignup();
                     }}
                     className="w-full flex justify-center flex-col"
                 >
