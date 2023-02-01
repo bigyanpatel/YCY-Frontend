@@ -1,9 +1,29 @@
 import React from 'react'
-import { useSignupForm } from '../../../hooks/useSignupForm';
+import { useSignupForm, useTogglePassword } from '../../../hooks/hooksExport';
 import { signupHandler } from '../../../features/AuthHandler';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { AuthState } from '../../../atoms';
+import { useNavigate } from 'react-router-dom';
 
 export const Signup = () => {
     const { signupData, signupFormHandler } = useSignupForm();
+    const {
+        passwordToggle,
+        checkPasswordView,
+        confirmPasswordToggle,
+        checkConfirmPasswordView,
+      } = useTogglePassword();
+    const authData = useRecoilValue(AuthState);
+    const setAuth = useSetRecoilState(AuthState);
+    const navigate = useNavigate();
+
+    const handleSignup = async(data, state, setState) =>{
+        const res = await signupHandler(data, state, setState);
+        if(res && res.status === 200){
+            navigate('./login')
+        }
+    }
 
   return (
     <div className='flex p-[15px] my-[50px] justify-center items-center min-h-screen'>
@@ -14,7 +34,7 @@ export const Signup = () => {
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        signupHandler(signupData);
+                        handleSignup(signupData,authData, setAuth);
                     }}
                     className="w-full flex justify-center flex-col"
                 >
@@ -23,7 +43,7 @@ export const Signup = () => {
                         onChange={signupFormHandler}
                         name='name'
                         value={signupData.name}
-                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300"
+                        className="w-full text-md font-bold py-3 px-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300"
                         type="text" 
                         placeholder="Your Name"
                     />
@@ -32,7 +52,7 @@ export const Signup = () => {
                         onChange={signupFormHandler}
                         name='email'
                         value={signupData.email}
-                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        className="w-full text-md font-bold py-3 px-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
                         type="email" 
                         placeholder="Your Email"
                     />
@@ -41,30 +61,52 @@ export const Signup = () => {
                         onChange={signupFormHandler}
                         name='phone'
                         value={signupData.phone}
-                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        className="w-full text-md font-bold py-3 px-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
                         type="number" 
                         placeholder="Your Contact No"
                     />
-                    <input 
-                        required
-                        onChange={signupFormHandler}
-                        name='password'
-                        value={signupData.password}
-                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
-                        type="password" 
-                        placeholder="Password"
-                    />
-                    <input 
-                        required
-                        onChange={signupFormHandler}
-                        name='confirmPassword'
-                        value={signupData.confirmPassword}
-                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
-                        type="password" 
-                        placeholder="Confirm Password"
-                    />
+                    <div className='relative'>
+                        <input 
+                            required
+                            onChange={signupFormHandler}
+                            name='password'
+                            value={signupData.password}
+                            className="w-full text-md font-bold py-3 px-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                            type={passwordToggle.type}
+                            placeholder="Password"
+                        />
+                        {!passwordToggle.isShow ? (
+                            <button type="button" onClick={checkPasswordView}>
+                            <FaRegEyeSlash className="eyeslash-icon" />
+                            </button>
+                        ) : (
+                            <button type="button" onClick={checkPasswordView}>
+                            <FaRegEye className="eyeslash-icon" />
+                            </button>
+                        )}
+                    </div>
+                    <div className='relative'>
+                        <input 
+                            required
+                            onChange={signupFormHandler}
+                            name='confirmPassword'
+                            value={signupData.confirmPassword}
+                            className="w-full text-md font-bold py-3 px-2 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                            type={confirmPasswordToggle.type}
+                            placeholder="Confirm Password"
+                        />
+                        {!confirmPasswordToggle.isShow ? (
+                            <button type="button" onClick={checkConfirmPasswordView}>
+                            <FaRegEyeSlash className="eyeslash-icon" />
+                            </button>
+                        ) : (
+                            <button type="button" onClick={checkConfirmPasswordView}>
+                            <FaRegEye className="eyeslash-icon" />
+                            </button>
+                        )}
+                    </div>
                     <button className="text-[14px] font-bold px-[15px] py-[13px] mt-[22px] mx-[30px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
-                        CREATE ACCOUNT
+                    {authData.isLoading ? "Loding..." : "CREATE ACCOUNT"}
                     </button>
                     <div className="flex items-start">
                         <div className="w-[50%] border-t mx-1 self-center border-gray-300"></div>

@@ -1,12 +1,14 @@
-import {atom, useRecoilState} from 'recoil';
+import {atom} from 'recoil';
 
 const AuthState = atom({
     key: "AuthState",
     default: {
-        loggedIn: false,
-        email: '',
+        isLoading: false,
+        user: null,
         token: '',
+        error: '',
+        value: 0,
     }
 })
 
-export const useAuthState = () => useRecoilState(AuthState);
+export {AuthState}

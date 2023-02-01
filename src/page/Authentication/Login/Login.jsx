@@ -1,9 +1,27 @@
 import React, {useState} from 'react'
 import { useLoginForm } from '../../../hooks/useLoginForm';
 import { loginHandler } from '../../../features/AuthHandler';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { AuthState } from '../../../atoms';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 export const Login = () => {
 const { loginData, loginErrors, loginFormHandler } = useLoginForm();
+const [showPassword, setShowPassword] = useState({
+    type: "password",
+    isShow: false,
+  });
+const setAuth = useSetRecoilState(AuthState);
+const authData = useRecoilValue(AuthState);
+const navigate = useNavigate();
+
+const handleLogin = async(data, state, setState) => {
+    const res = await loginHandler(data, state, setState);
+    if(res && res.status === 200){
+        navigate('../')
+    }
+}
 
 return (
     <div className='flex p-[15px] my-[50px] justify-center items-center min-h-screen'>
@@ -14,14 +32,14 @@ return (
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        loginHandler(loginData)
+                        handleLogin(loginData, authData, setAuth);
                     }}
                     className="w-full flex justify-center flex-col"
                 >
                 <div>
                     <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
                     <input 
-                        className="w-full text-md py-3 font-bold border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        className="w-full text-md py-3 px-2 font-bold border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
                         type="email" 
                         placeholder="you@example.com" 
                         name='email' 
@@ -45,20 +63,40 @@ return (
                             </a>
                         </div>
                     </div>
+                    <div className='relative'>
                     <input 
                         onChange={(e) => loginFormHandler(e)}
-                        className="w-full text-md py-3 font-bold border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
-                        type="password" 
+                        className="w-full text-md py-3 px-2 font-bold border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        type={showPassword.type}
                         placeholder="Enter your password"
                         name='password'
                         value={loginData.password}
                     />
+                    {!showPassword.isShow ? (
+                        <button
+                        type="button"
+                        onClick={() => setShowPassword({ type: "text", isShow: true })}
+                        >
+                        <FaRegEyeSlash className="eyeslash-icon" />
+                        </button>
+                    ) : (
+                        <button
+                        type="button"
+                        onClick={() =>
+                            setShowPassword({ type: "password", isShow: false })
+                        }
+                        >
+                        <FaRegEye className="eyeslash-icon" />
+                        </button>
+                    )}
+                    </div>
+                    
                     {/* {loginErrors.password && (
                         <p className="text-red-500">{loginErrors.password}</p>
                     )} */}
                 </div>
                 <button className="text-[14px] font-bold px-[20px] py-[13px] mt-[22px] mx-[82px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
-                    LOG IN
+                {authData.isLoading ? "Loding..." : "LOG IN"}
                 </button>
                 <div className="flex items-start">
                     <div className="w-[50%] border-t mx-1 self-center border-gray-300"></div>
