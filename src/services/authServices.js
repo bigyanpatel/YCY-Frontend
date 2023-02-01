@@ -1,6 +1,6 @@
 import axios from "axios";
 export const loginService = (loginData) =>
-axios({
+  axios({
     method: 'post',
     url: `${process.env.REACT_APP_API_URL}/signIn`,
     data: {
@@ -10,4 +10,4 @@ axios({
   });
 
 export const signUpService = (signUpData) =>
-  axios.post("/api/auth/signup", signUpData);
+  axios.post(`${process.env.REACT_APP_API_URL}/signUp`, signUpData);

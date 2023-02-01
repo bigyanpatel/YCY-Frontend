@@ -1,6 +1,10 @@
 import React from 'react'
+import { useSignupForm } from '../../../hooks/useSignupForm';
+import { signupHandler } from '../../../features/AuthHandler';
 
 export const Signup = () => {
+    const { signupData, signupFormHandler } = useSignupForm();
+
   return (
     <div className='flex p-[15px] my-[50px] justify-center items-center min-h-screen'>
         <div className='relative h-[600px] w-[535px] overflow-hidden shadow-2xl border-[rgba(251,54,0,0.54)] border'>
@@ -8,26 +12,67 @@ export const Signup = () => {
                 <h3 className='text-[28px] font-bold'>Sign Up</h3>
                 <hr className='w-[100%] my-[16px]'/>
                 <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                }}
-                className="w-full flex justify-center flex-col"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        signupHandler(signupData);
+                    }}
+                    className="w-full flex justify-center flex-col"
                 >
-                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="name" placeholder="Your Name"/>
-                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Your Email"/>
-                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="number" placeholder="Your Contact No"/>
-                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Password"/>
-                <input className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" type="email" placeholder="Confirm Password"/>
-                <button className="text-[14px] font-bold px-[15px] py-[13px] mt-[22px] mx-[30px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
-                    CREATE ACCOUNT
-                </button>
-                <div className="flex items-start">
-                    <div className="w-[50%] border-t mx-1 self-center border-gray-300"></div>
-                    <span className="px-2 my-2 text-gray-400 font-semibold text-center">
-                    OR
-                    </span>
-                    <div className="w-3/6 border-t mx-1 self-center border-gray-300"></div>
-                </div>
+                    <input 
+                        required
+                        onChange={signupFormHandler}
+                        name='name'
+                        value={signupData.name}
+                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300"
+                        type="text" 
+                        placeholder="Your Name"
+                    />
+                    <input 
+                        required
+                        onChange={signupFormHandler}
+                        name='email'
+                        value={signupData.email}
+                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        type="email" 
+                        placeholder="Your Email"
+                    />
+                    <input 
+                        required
+                        onChange={signupFormHandler}
+                        name='phone'
+                        value={signupData.phone}
+                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        type="number" 
+                        placeholder="Your Contact No"
+                    />
+                    <input 
+                        required
+                        onChange={signupFormHandler}
+                        name='password'
+                        value={signupData.password}
+                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        type="password" 
+                        placeholder="Password"
+                    />
+                    <input 
+                        required
+                        onChange={signupFormHandler}
+                        name='confirmPassword'
+                        value={signupData.confirmPassword}
+                        className="w-full text-md font-bold py-3 border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        type="password" 
+                        placeholder="Confirm Password"
+                    />
+                    <button className="text-[14px] font-bold px-[15px] py-[13px] mt-[22px] mx-[30px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
+                        CREATE ACCOUNT
+                    </button>
+                    <div className="flex items-start">
+                        <div className="w-[50%] border-t mx-1 self-center border-gray-300"></div>
+                        <span className="px-2 my-2 text-gray-400 font-semibold text-center">
+                        OR
+                        </span>
+                        <div className="w-3/6 border-t mx-1 self-center border-gray-300"></div>
+                    </div>
                 </form>
                 <div className="text-sm font-display font-semibold text-gray-700 text-center">
                     Already have an account ? <a className="cursor-pointer text-indigo-600 hover:text-indigo-800" href='/login'>Log In</a>

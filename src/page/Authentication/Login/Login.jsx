@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useLoginForm } from '../../../hooks/useLoginForm';
-import { loginHandler } from '../../../features/loginHandler';
+import { loginHandler } from '../../../features/AuthHandler';
 
 export const Login = () => {
 const { loginData, loginErrors, loginFormHandler } = useLoginForm();
