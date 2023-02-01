@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        hovercolor: '#000000',
+      },
+    },
     fontFamily: {
       lobster: "Lobster Two,cursive",
       roboto: "Roboto,sans-serif",

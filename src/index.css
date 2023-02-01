@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-      font-family: roboto, sans-serif;
-    }
+  html {
+    font-family: roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .icon {
+    @apply cursor-pointer w-9 h-9 hover:bg-[#f5f5f5] hover:bg-opacity-90 flex items-center justify-center rounded-full transition ease-out;
+  }
 }
