@@ -28,6 +28,7 @@
     "react-scripts": "5.0.1",
     "react-time-ago": "^7.2.1",
     "recoil": "^0.7.6",
+    "recoilize": "^3.1.6",
     "sass": "^1.57.1",
     "web-vitals": "^2.1.4"
   },

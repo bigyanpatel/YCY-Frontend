@@ -16,5 +16,9 @@
 }
 
 .eyeslash-icon {
-  @apply top-5 right-2 cursor-pointer text-lg text-gray-500 hover:text-black absolute;
+  @apply top-4 right-2 cursor-pointer text-lg text-gray-500 hover:text-black absolute;
+}
+
+input:-webkit-autofill { 
+  -webkit-background-clip: text;
 }

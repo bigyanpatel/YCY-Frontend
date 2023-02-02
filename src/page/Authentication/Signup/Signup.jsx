@@ -6,6 +6,8 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { AuthState } from '../../../atoms';
 import { useNavigate } from 'react-router-dom';
 import { replace } from 'lodash';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Signup = () => {
     const { signupData, signupFormHandler } = useSignupForm();
@@ -117,6 +119,7 @@ export const Signup = () => {
                         <div className="w-3/6 border-t mx-1 self-center border-gray-300"></div>
                     </div>
                 </form>
+                <a className='hover:shadow-xl duration-300 rounded-[50%] mb-[10px]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-black border-2 hover:border-[#17a2b8] hover:bg-[#17a2b8] text-black fill-current hover:text-white hover:shadow-xl duration-300'><FontAwesomeIcon icon={faGoogle}/></div></a>
                 <div className="text-sm font-display font-semibold text-gray-700 text-center">
                     Already have an account ? <a className="cursor-pointer text-indigo-600 hover:text-indigo-800" href='/login'>Log In</a>
                 </div>

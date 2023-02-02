@@ -4,17 +4,20 @@ import { loginHandler } from '../../../features/AuthHandler';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { AuthState } from '../../../atoms';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 export const Login = () => {
 const { loginData, loginErrors, loginFormHandler } = useLoginForm();
+const [authState, setAuthState] = useRecoilState(AuthState);
 const [showPassword, setShowPassword] = useState({
     type: "password",
     isShow: false,
   });
-const [authState, setAuthState] = useRecoilState(AuthState);
 const authData = useRecoilValue(AuthState);
 const navigate = useNavigate();
+
 
 const handleLogin = async () =>{
     const res = await loginHandler(loginData, authData, setAuthState)
@@ -66,7 +69,7 @@ return (
                     <div className='relative'>
                     <input 
                         onChange={(e) => loginFormHandler(e)}
-                        className="w-full text-md py-3 px-2 font-bold border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent duration-300" 
+                        className="w-full text-md py-3 px-2 font-bold border-b-2 border-gray-300 outline-none focus:border-[#6c757d] hover:border-[#6c757d] bg-transparent fill-none  duration-300" 
                         type={showPassword.type}
                         placeholder="Enter your password"
                         name='password'
@@ -96,7 +99,7 @@ return (
                     )} */}
                 </div>
                 <button className="text-[14px] font-bold px-[20px] py-[13px] mt-[22px] mx-[82px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
-                {authData.isLoading ? "Loding..." : "LOG IN"}
+                    {authData.isLoading ? "Loding..." : "LOG IN"}
                 </button>
                 <div className="flex items-start">
                     <div className="w-[50%] border-t mx-1 self-center border-gray-300"></div>
@@ -106,6 +109,7 @@ return (
                     <div className="w-3/6 border-t mx-1 self-center border-gray-300"></div>
                 </div>
                 </form>
+                <a className='hover:shadow-xl duration-300 rounded-[50%] mb-[10px]' href="" target="_blank"><div className='w-[46px] h-[46px] flex items-center justify-center rounded-[50%] border-black border-2 hover:border-[#17a2b8] hover:bg-[#17a2b8] text-black fill-current hover:text-white hover:shadow-xl duration-300'><FontAwesomeIcon icon={faGoogle}/></div></a>
                 <div className="text-sm font-display font-semibold text-gray-700 text-center">
                     Don't have an account ? <a className="cursor-pointer text-indigo-600 hover:text-indigo-800" href='/signup'>Sign up</a>
                 </div>

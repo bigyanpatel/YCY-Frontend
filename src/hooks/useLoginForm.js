@@ -2,7 +2,10 @@ import { omit } from "lodash";
 import { useState } from "react";
 
 const useLoginForm = () => {
-  const [loginData, setLoginData] = useState({});
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: '',
+  });
   const [loginErrors, setLoginErrors] = useState({});
 
   const loginFormHandler = (e) => {
