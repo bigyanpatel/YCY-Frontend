@@ -2,17 +2,33 @@ import { loginService, signUpService } from "../services/authServices";
 import toast from "react-hot-toast";
 import { toastProps } from "../constants";
 
+export default function getCookie(cookieName) {
+    let name = cookieName + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
 export const loginHandler = async (loginData, authState, setAuthState) =>{
     try {
         setAuthState({...authState, isLoading: true})
         const res = await loginService(loginData);
         if (res.status === 200){
-            await setAuthState({...authState, isLoading: false, token: res.data.authToken})
+            await setAuthState({...authState, isLoading: false, token: getCookie('jwt')})
             localStorage.setItem(
                 "authData",
                 JSON.stringify({
-                  token: res.data.authToken,
-                  user: 'Bigyan',
+                  token: getCookie('jwt'),
+                  user: 'Test Users',
                 })
               );
             toast.success(res.data.message, toastProps);
@@ -30,7 +46,7 @@ export const signupHandler = async (signupData, authState, setAuthState) =>{
         setAuthState({...authState, isLoading: true})
         const res = await signUpService(signupData);
         if (res.status === 201){
-            toast.success('Account Created! Sent and verification link to email. Please Check!', {...toastProps, duration: 5000});
+            toast.success('Account Created! Sent a verification link to email. Please Check!', {...toastProps, duration: 5000});
             setAuthState({...authState, isLoading: false})
             return res;
         }
