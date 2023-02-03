@@ -32,6 +32,27 @@ const dropIn = {
     },
 };
 
+// const PostdropIn = {
+//     hidden: {
+//         y: "-100vh",
+//         opacity: 0,
+//     },
+//     visible: {
+//         y: "0",
+//         opacity: 1,
+//         transition: {
+//             duration: 0.1,
+//             type: "spring",
+//             damping: 25,
+//             stiffness: 500,
+//         },
+//     },
+//     exit: {
+//         y: "100vh",
+//         opacity: 0,
+//     },
+// };
+
 // const gifYouUp = {
 //     hidden: {
 //         opacity: 0,
@@ -93,20 +114,17 @@ const Modal = ({ handleClose, type }) => {
             {type === "dropIn" && (
                 <motion.div
                     onClick={(e) => e.stopPropagation()}
-                    className=" rounded-xl flex flex-col justify-center bg-white dark:bg-[#ffffff] w-full max-w-lg md:-mt-60 mx-6 "
+                    className=" z-[20] rounded-xl flex flex-col justify-center bg-white dark:bg-[#ffffff] w-full max-w-lg md:-mt-[260px] mx-6 "
                     variants={dropIn}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
                 >
-
                     <div>
                         <IconButton onClick={handleClose}>
-                            <CloseRoundedIcon className="h-7 w-7 dark:text-[#000000] ml-[]" />
+                            <CloseRoundedIcon className="h-7 w-7 text-[#ec6b25] hover:text-black duration-300 " />
                         </IconButton>
                     </div>
-
-
 
                     <div className="flex flex-col w-full items-center justify-between px-4 py-2.5">
                         {/* 
@@ -114,12 +132,7 @@ const Modal = ({ handleClose, type }) => {
                         <h4 className="ml-10 text-xl text-[#000000] font-medium">Post</h4> */}
 
 
-
-
-
                         <Tab.Group>
-
-
                             <Tab.List className="flex space-x-24 mt-[-50px]">
 
                                 <Tab className={({ selected }) =>
@@ -151,7 +164,7 @@ const Modal = ({ handleClose, type }) => {
                                             <h6 className="font-bold">Rafeeq Syed Amjad</h6>
                                         </div>
 
-                                        <div className="w-full divide-y">
+                                        <div className="">
                                             <form className={`${selectedFile && "pb-1"} ${input && "space-y-2.5"}`}>
                                                 <textarea rows="2" placeholder="  Ask your doubt ..."
                                                     className=" ml-[3] bg-transparent focus:outline-none w-full"
@@ -161,20 +174,17 @@ const Modal = ({ handleClose, type }) => {
                                             {selectedFile && (
                                                 <div className="relative">
                                                     <div className="absolute " onClick={() => setSelectedFile(null)}>
-                                                        <XMarkIcon className="dark:text-[#000000] h-5 icon ml-2 mt-2" />
+                                                        <XMarkIcon className="text-[#ec6b25] hover:text-black duration-300 h-5 icon ml-2 mt-2" />
                                                     </div>
                                                     <img src={selectedFile} alt="" className="object-contain rounded-2xl max-h-64" />
                                                 </div>
                                             )}
                                         </div>
                                     </div>
-
-
-
                                     <div className="flex items-center justify-between pt-2.5 pl-5">
                                         <div className="flex items-center ">
                                             <div className="icon" onClick={() => filePickerRef.current.click()}>
-                                                <PhotoIcon className="h-[22px] text-[#000000] cursor-pointer" />
+                                                <PhotoIcon className="h-[22px]  text-[#ec6b25] hover:text-black duration-300 cursor-pointer" />
                                                 <input hidden type="file" onChange={addImageToPost} ref={filePickerRef} />
                                             </div>
                                         </div>
@@ -206,7 +216,7 @@ const Modal = ({ handleClose, type }) => {
                                             {selectedFile && (
                                                 <div className="relative">
                                                     <div className="absolute " onClick={() => setSelectedFile(null)}>
-                                                        <XMarkIcon className="text-[#000000] h-5 icon ml-2 mt-2" />
+                                                        <XMarkIcon className=" text-[#ec6b25] hover:text-black duration-300 h-5 icon ml-2 mt-2" />
                                                     </div>
                                                     <img src={selectedFile} alt="" className="object-contain rounded-2xl max-h-64" />
                                                 </div>
@@ -219,7 +229,7 @@ const Modal = ({ handleClose, type }) => {
                                     <div className="flex items-center justify-between pt-2.5 pl-5">
                                         <div className="flex items-center ">
                                             <div className="icon" onClick={() => filePickerRef.current.click()}>
-                                                <PhotoIcon className="h-[22px] text-[#000000] cursor-pointer" />
+                                                <PhotoIcon className="h-[22px]  text-[#ec6b25] hover:text-black duration-300 cursor-pointer" />
                                                 <input hidden type="file" onChange={addImageToPost} ref={filePickerRef} />
                                             </div>
                                         </div>
@@ -274,29 +284,20 @@ const Modal = ({ handleClose, type }) => {
                     animate="visible"
                     exit="exit"
                 >
-
                     <div>
                         <IconButton onClick={handleClose}>
-                            <CloseRoundedIcon className="h-7 w-7 dark:text-[#000000] ml-[]" />
+                            <CloseRoundedIcon className="h-7 w-7 text-[#ec6b25] hover:text-black duration-300" />
                         </IconButton>
                     </div>
-
-
 
                     <div className="flex flex-col w-full items-center justify-between px-4 py-2.5">
                         {/* 
                         <h4 className="ml-10 text-xl text-[#000000] font-medium">Add Question</h4>
                         <h4 className="ml-10 text-xl text-[#000000] font-medium">Post</h4> */}
 
-
-
-
-
                         <Tab.Group>
 
-
                             <Tab.List className="flex space-x-24 mt-[-50px]">
-
                                 <Tab className={({ selected }) =>
                                     `whitespace-nowrap rounded-t-lg py-3 px-5 text-xl font-medium outline-none md:py-4 md:px-6 md:text-base text-[#000000] ${selected
                                         ? "border-b-2 border-[#ec6b25] text-[#000000] "
@@ -305,7 +306,6 @@ const Modal = ({ handleClose, type }) => {
                                 }
                                 >Post
                                 </Tab>
-
                                 <Tab className={({ selected }) =>
                                     `whitespace-nowrap rounded-t-lg py-3 px-5 text-xl font-medium outline-none md:py-4 md:px-6 md:text-base text-[#000000] ${selected
                                         ? "border-b-2 border-[#ec6b25] text-[#000000] "
@@ -318,7 +318,6 @@ const Modal = ({ handleClose, type }) => {
 
 
                             <Tab.Panels className="flex w-full ">
-
                                 <Tab.Panel className="w-full">
                                     <div className="p-4 space-y-2">
                                         <div className="flex items-center space-x-2">
@@ -328,73 +327,24 @@ const Modal = ({ handleClose, type }) => {
 
                                         <div className="w-full divide-y">
                                             <form className={`${selectedFile && "pb-1"} ${input && "space-y-2.5"}`}>
-                                                <textarea rows="2" placeholder="  Ask your doubt ..."
+                                                <textarea rows="2" placeholder=" Say Something ... "
                                                     className=" ml-[3] bg-transparent focus:outline-none w-full"
                                                     value={input} onChange={(e) => setInput(e.target.value)} />
                                             </form>
-
                                             {selectedFile && (
                                                 <div className="relative">
                                                     <div className="absolute " onClick={() => setSelectedFile(null)}>
-                                                        <XMarkIcon className="dark:text-[#000000] h-5 icon ml-2 mt-2" />
+                                                        <XMarkIcon className="text-[#ec6b25] hover:text-black duration-300 h-5 icon ml-2 mt-2" />
                                                     </div>
                                                     <img src={selectedFile} alt="" className="object-contain rounded-2xl max-h-64" />
                                                 </div>
                                             )}
                                         </div>
                                     </div>
-
-
-
                                     <div className="flex items-center justify-between pt-2.5 pl-5">
                                         <div className="flex items-center ">
                                             <div className="icon" onClick={() => filePickerRef.current.click()}>
-                                                <PhotoIcon className="h-[22px] text-[#000000] cursor-pointer" />
-                                                <input hidden type="file" onChange={addImageToPost} ref={filePickerRef} />
-                                            </div>
-                                        </div>
-                                        <button className="bg-[#ec6b25] text-[#fff] rounded-full  px-4 py-1.5 font-bold shadow-md mr-2 mb-2
-                                                disabled:opacity-50"
-                                            disabled={!input.trim() && !selectedFile}
-                                            onClick={sendQuestion}
-                                        >
-                                            Post
-                                        </button>
-                                    </div>
-                                </Tab.Panel>
-
-
-                                <Tab.Panel className="w-full">
-                                    <div className="p-4 space-y-2">
-                                        <div className="flex items-center space-x-2">
-                                            <Avatar className="!h-11 !w-11" />
-                                            <h6 className="font-bold">Rafeeq Syed Amjad</h6>
-                                        </div>
-
-                                        <div className="w-full divide-y">
-                                            <form className={`${selectedFile && "pb-1"} ${input && "space-y-2.5"}`}>
-                                                <textarea rows="2" placeholder="  Say Something ..."
-                                                    className=" ml-[3] bg-transparent focus:outline-none w-full"
-                                                    value={input} onChange={(e) => setInput(e.target.value)} />
-                                            </form>
-
-                                            {selectedFile && (
-                                                <div className="relative">
-                                                    <div className="absolute " onClick={() => setSelectedFile(null)}>
-                                                        <XMarkIcon className="text-[#000000] h-5 icon ml-2 mt-2" />
-                                                    </div>
-                                                    <img src={selectedFile} alt="" className="object-contain rounded-2xl max-h-64" />
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-
-
-
-                                    <div className="flex items-center justify-between pt-2.5 pl-5">
-                                        <div className="flex items-center ">
-                                            <div className="icon" onClick={() => filePickerRef.current.click()}>
-                                                <PhotoIcon className="h-[22px] text-[#000000] cursor-pointer" />
+                                                <PhotoIcon className="h-[22px]  text-[#ec6b25] hover:text-black duration-300 cursor-pointer" />
                                                 <input hidden type="file" onChange={addImageToPost} ref={filePickerRef} />
                                             </div>
                                         </div>
@@ -407,20 +357,53 @@ const Modal = ({ handleClose, type }) => {
                                         </button>
                                     </div>
                                 </Tab.Panel>
+                                <Tab.Panel className="w-full">
+                                    <div className="p-4 space-y-2">
+                                        <div className="flex items-center space-x-2">
+                                            <Avatar className="!h-11 !w-11" />
+                                            <h6 className="font-bold">Rafeeq Syed Amjad</h6>
+                                        </div>
 
+                                        <div className="w-full divide-y">
+                                            <form className={`${selectedFile && "pb-1"} ${input && "space-y-2.5"}`}>
+                                                <textarea rows="2" placeholder="Ask your doubt ..."
+                                                    className=" ml-[3] bg-transparent focus:outline-none w-full"
+                                                    value={input} onChange={(e) => setInput(e.target.value)} />
+                                            </form>
 
+                                            {selectedFile && (
+                                                <div className="relative">
+                                                    <div className="absolute " onClick={() => setSelectedFile(null)}>
+                                                        <XMarkIcon className="text-[#ec6b25] hover:text-black duration-300 h-5 icon ml-2 mt-2" />
+                                                    </div>
+                                                    <img src={selectedFile} alt="" className="object-contain rounded-2xl max-h-64" />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center justify-between pt-2.5 pl-5">
+                                        <div className="flex items-center ">
+                                            <div className="icon" onClick={() => filePickerRef.current.click()}>
+                                                <PhotoIcon className="h-[22px]  text-[#ec6b25] hover:text-black duration-300 cursor-pointer" />
+                                                <input hidden type="file" onChange={addImageToPost} ref={filePickerRef} />
+                                            </div>
+                                        </div>
+                                        <button className="bg-[#ec6b25] text-[#fff] rounded-full  px-4 py-1.5 font-bold shadow-md mr-2 mb-2
+                                                disabled:opacity-50"
+                                            disabled={!input.trim() && !selectedFile}
+                                            onClick={sendQuestion}
+                                        >
+                                            Post
+                                        </button>
+                                    </div>
+                                </Tab.Panel>
                             </Tab.Panels>
                         </Tab.Group>
-
                     </div>
-
                 </motion.div>
             )
 
             }
-
-
-
         </Backdrop >
     );
 };

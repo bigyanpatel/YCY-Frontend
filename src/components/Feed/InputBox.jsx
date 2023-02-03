@@ -8,8 +8,9 @@ function InputBox() {
     const [modalType, setModalType] = useRecoilState(modalTypeState);
     const [postmodalOpen, setPostModalOpen] = useRecoilState(PostmodalState);
     const [postModalType, setPostModalType] = useRecoilState(postModalTypeState);
+
     return (
-        <div className="flex flex-col  border-[#ec6b25] hover:border-hovercolor bg-[#ffffff] rounded-md max-w-[550px]">
+        <div className="flex flex-col  border-[#ec6b25] hover:border-hovercolor bg-[#ffffff] rounded-md max-w-[700px] max-[800px]:max-w-[900px]">
             <div className="flex items-center mt-2 ml-2">
                 <Avatar className="h-[45px] w-[30px]" />
                 <button onClick={() => {
