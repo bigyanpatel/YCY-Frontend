@@ -5,14 +5,17 @@ import { HomeIcon, MagnifyingGlassIcon, QuestionMarkCircleIcon, UserCircleIcon }
 import { CgNotes } from "react-icons/cg";
 import ycylogo from '../../assets/Images/ycylogo.png'
 import { SidebarData } from './SidebarData';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { AuthState } from '../../atoms';
 import { useNavigate } from 'react-router-dom';
 import { logoutHandler } from '../../features/AuthHandler';
+import { Avatar } from '@mui/material';
 
 function Header() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0);
+
+
 
     useEffect(() => {
         setScreenWidth(window.innerWidth);
@@ -29,6 +32,38 @@ function Header() {
         logoutHandler(setAuth)
         navigate('./login')
     }
+    function stringToColor(string) {
+        let hash = 0;
+        let i;
+
+        /* eslint-disable no-bitwise */
+        for (i = 0; i < string.length; i += 1) {
+            hash = string.charCodeAt(i) + ((hash << 5) - hash);
+        }
+
+        let color = '#';
+
+        for (i = 0; i < 3; i += 1) {
+            const value = (hash >> (i * 8)) & 0xff;
+            color += `00${value.toString(16)}`.slice(-2);
+        }
+        /* eslint-enable no-bitwise */
+
+        return color;
+    }
+
+
+    function stringAvatar(name) {
+        return {
+            sx: {
+                bgcolor: stringToColor(name),
+            },
+            children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+        };
+    }
+
+
+
 
 
     return (
@@ -50,7 +85,7 @@ function Header() {
                     <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300"><CgNotes className='w-8 h-8 ' /></div>
                 </div>
 
-                <div className='p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[25px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300  ' onClick={handleClick}>< UserCircleIcon className='w-8 h-8' onClick={toggleSidebar} />
+                <div className='p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0 max-[450px]:ml-[-50px] text-[#ec6b25] hover:text-black duration-300  ' onClick={handleClick}>< Avatar className='w-8 h-8'{...stringAvatar("Rafeeq Syed")} onClick={toggleSidebar} />
                     {screenWidth <= 768 && sidebarVisible && (
                         <div className="h-[100vh] w-[300px] max-w-[360px] z-[100] absolute bg-[#ffffff] left-0 top-0  flex flex-col ">
                             <ul className="h-auto w-[100%] p-0 ">

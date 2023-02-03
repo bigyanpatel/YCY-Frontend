@@ -5,6 +5,9 @@ import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
+import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
+import CastForEducationOutlinedIcon from '@mui/icons-material/CastForEducationOutlined';
 
 export const SidebarData = [
 
@@ -14,20 +17,20 @@ export const SidebarData = [
         link: "/Profile"
     },
     {
-        title: "Blog",
-        icon: <DescriptionOutlinedIcon />,
-        link: "/Blog"
+        title: "Your Payment",
+        icon: <PaidOutlinedIcon />,
+        link: "/YourPayment"
     },
     {
-        title: "Contact Us",
-        icon: <ContactPhoneOutlinedIcon />,
-        link: "/Contact Us"
+        title: "Star User(Premium)",
+        icon: <WorkspacePremiumOutlinedIcon />,
+        link: "/StarUser"
 
     },
     {
-        title: "Student Review",
-        icon: <PersonOutlineOutlinedIcon />,
-        link: "/StudentReview"
+        title: "Private Tution(Book Now)",
+        icon: <CastForEducationOutlinedIcon />,
+        link: "/PrivateTution"
     },
     {
         title: "Book Review",
@@ -39,6 +42,25 @@ export const SidebarData = [
         icon: <SchoolOutlinedIcon />,
         link: "/CollegeReview"
     },
+    {
+        title: "Contact Us",
+        icon: <ContactPhoneOutlinedIcon />,
+        link: "/ContactUs"
+
+    },
+    {
+        title: "Blog",
+        icon: <DescriptionOutlinedIcon />,
+        link: "/Blog"
+    },
+
+    {
+        title: "logout",
+        icon: <PersonOutlineOutlinedIcon />,
+        link: "/logout  "
+    },
+
+
 
 
 

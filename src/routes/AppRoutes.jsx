@@ -9,18 +9,18 @@ export const AppRoutes = () => {
   const authData = useRecoilValue(AuthState);
   return (
     <Routes>
-      <Route 
-        path="/" 
+      <Route
+        path="/"
         element={
           <PrivateRoute>
             <HomePage />
           </PrivateRoute>
-        } 
+        }
       />
       {!authData.token ? (
         <>
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup/>} />
+          <Route path="/signup" element={<Signup />} />
         </>
       ) : (
         <>
