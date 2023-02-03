@@ -8,10 +8,10 @@ export default function getCookie(cookieName) {
   let ca = decodedCookie.split(';');
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
-    while (c.charAt(0) == ' ') {
+    while (c.charAt(0) === ' ') {
       c = c.substring(1);
     }
-    if (c.indexOf(name) == 0) {
+    if (c.indexOf(name) === 0) {
       return c.substring(name.length, c.length);
     }
   }
@@ -23,12 +23,12 @@ export const loginHandler = async (loginData, authState, setAuthState) => {
     setAuthState({ ...authState, isLoading: true })
     const res = await loginService(loginData);
     if (res.status === 200) {
-      await setAuthState({ ...authState, isLoading: false, token: getCookie('jwt') })
+      setAuthState({ ...authState, isLoading: false, token: getCookie('jwt'), user: res.data.data })
       localStorage.setItem(
         "authData",
         JSON.stringify({
           token: getCookie('jwt'),
-          user: 'Test Users',
+          user: res.data.data,
         })
       );
       toast.success(res.data.message, toastProps);
@@ -40,6 +40,7 @@ export const loginHandler = async (loginData, authState, setAuthState) => {
     return;
   }
 }
+
 
 export const signupHandler = async (signupData, authState, setAuthState) => {
   try {
@@ -61,7 +62,7 @@ export const logoutHandler = (setAuth) => {
   localStorage.removeItem("authData");
   setAuth({
     isLoading: false,
-    user: null,
+    user: '',
     token: '',
     error: '',
   })
