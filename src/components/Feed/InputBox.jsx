@@ -1,18 +1,21 @@
 import { Avatar } from '@mui/material';
 import React from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { AuthState } from '../../atoms';
 import { modalState, modalTypeState, PostmodalState, postModalTypeState } from '../../atoms/modalAtom'
+import { stringAvatar } from '../../constants';
 
 function InputBox() {
     const [modalOpen, setModalOpen] = useRecoilState(modalState);
     const [modalType, setModalType] = useRecoilState(modalTypeState);
     const [postmodalOpen, setPostModalOpen] = useRecoilState(PostmodalState);
     const [postModalType, setPostModalType] = useRecoilState(postModalTypeState);
+    const state = useRecoilValue(AuthState)
 
     return (
         <div className="flex flex-col  border-[#ec6b25] hover:border-hovercolor bg-[#ffffff] rounded-md max-w-[700px] max-[800px]:max-w-[900px]">
             <div className="flex items-center mt-2 ml-2">
-                <Avatar className="h-[45px] w-[30px]" />
+                <Avatar className="h-[45px] w-[30px]" {...stringAvatar(state.user.name)}/>
                 <button onClick={() => {
                     setModalOpen(true);
                     setModalType('dropIn');

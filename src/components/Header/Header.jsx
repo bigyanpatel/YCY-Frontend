@@ -5,10 +5,12 @@ import { HomeIcon, MagnifyingGlassIcon, QuestionMarkCircleIcon, UserCircleIcon }
 import { CgNotes } from "react-icons/cg";
 import ycylogo from '../../assets/Images/ycylogo.png'
 import { SidebarData } from './SidebarData';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { AuthState } from '../../atoms';
 import { useNavigate } from 'react-router-dom';
 import { logoutHandler } from '../../features/AuthHandler';
+import { Avatar } from '@mui/material';
+import { stringAvatar } from '../../constants';
 
 function Header() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -24,12 +26,12 @@ function Header() {
 
     const setAuth = useSetRecoilState(AuthState);
     const navigate = useNavigate()
+    const state = useRecoilValue(AuthState)
 
     const handleClick = () => {
         logoutHandler(setAuth)
         navigate('./login')
     }
-
 
     return (
         <div className='relative top-0 flex items-center justify-center  shadow-[2px_3px_6px_rgba(187,187,187,0.5)] p-[3px]  w-[100%]'>
@@ -43,14 +45,12 @@ function Header() {
                     <input className='bg-transparent border-none outline-none color:rgb(49,49,49) text-black ml-2 ' type="text" placeholder="Search questions" />
                 </div>
 
-                <div className='flex'>
+                <div className='flex items-center'>
                     <div className=" p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[30px] mr-[20px] max-[450px]:mr-0 max-[750px]:ml-[140px] max-[600px]:ml-[75px] max-[420px]:ml-[40px]  text-[#ec6b25] hover:text-black duration-300"><HomeIcon className='w-8 h-8' /></div>
                     <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300"><UserCircleIcon className='w-8 h-8 ' /></div>
                     <div className=" p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300"><QuestionMarkCircleIcon className='w-8 h-8 ' /></div>
                     <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300"><CgNotes className='w-8 h-8 ' /></div>
-                </div>
-
-                <div className='p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[25px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300  ' onClick={handleClick}>< UserCircleIcon className='w-8 h-8' onClick={toggleSidebar} />
+                    <div className='p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[60px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300  ' onClick={handleClick}>< Avatar {...stringAvatar(state.user.name)} onClick={toggleSidebar}/>
                     {screenWidth <= 768 && sidebarVisible && (
                         <div className="h-[100vh] w-[300px] max-w-[360px] z-[100] absolute bg-[#ffffff] left-0 top-0  flex flex-col ">
                             <ul className="h-auto w-[100%] p-0 ">
@@ -64,6 +64,7 @@ function Header() {
                             </ul>
                         </div>
                     )}
+                </div>               
                 </div>
             </div >
         </div >

@@ -23,12 +23,12 @@ export const loginHandler = async (loginData, authState, setAuthState) =>{
         setAuthState({...authState, isLoading: true})
         const res = await loginService(loginData);
         if (res.status === 200){
-            await setAuthState({...authState, isLoading: false, token: getCookie('jwt')})
+            setAuthState({...authState, isLoading: false, token: getCookie('jwt'), user: res.data.data})
             localStorage.setItem(
                 "authData",
                 JSON.stringify({
                   token: getCookie('jwt'),
-                  user: 'Test Users',
+                  user: res.data.data,
                 })
               );
             toast.success(res.data.message, toastProps);
@@ -61,7 +61,7 @@ export const logoutHandler = (setAuth) => {
     localStorage.removeItem("authData");
     setAuth({
         isLoading: false,
-        user: null,
+        user: '',
         token: '',
         error: '',
     })

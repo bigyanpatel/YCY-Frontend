@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useLoginForm } from '../../../hooks/useLoginForm';
 import { loginHandler } from '../../../features/AuthHandler';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { AuthState } from '../../../atoms';
+import { AuthState, userData } from '../../../atoms';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
