@@ -1,30 +1,21 @@
 import React, {useState} from 'react'
 import { useLoginForm } from '../../../hooks/useLoginForm';
-import { loginHandler } from '../../../features/AuthHandler';
+import { AuthHandler } from '../../../features/AuthHandler';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { AuthState, userData } from '../../../atoms';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { AuthState } from '../../../atoms/authState';
+import { useRecoilValue } from 'recoil';
 
 export const Login = () => {
 const { loginData, loginErrors, loginFormHandler } = useLoginForm();
-const [authState, setAuthState] = useRecoilState(AuthState);
+const {loginHandler} = AuthHandler();
+
 const [showPassword, setShowPassword] = useState({
     type: "password",
     isShow: false,
   });
-const authData = useRecoilValue(AuthState);
-const navigate = useNavigate();
 
+const state = useRecoilValue(AuthState);
 
-const handleLogin = async () =>{
-    const res = await loginHandler(loginData, authData, setAuthState)
-    if(res && res.status === 200){
-        navigate('/', {replace: true})
-    }
-}
 
 return (
     <div className='flex p-[15px] my-[50px] justify-center items-center min-h-screen'>
@@ -35,7 +26,7 @@ return (
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        handleLogin();
+                        loginHandler(loginData);
                     }}
                     className="w-full flex justify-center flex-col"
                 >
@@ -99,7 +90,7 @@ return (
                     )} */}
                 </div>
                 <button className="text-[14px] font-bold px-[20px] py-[13px] mt-[22px] mx-[82px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
-                    {authData.isLoading ? "Loding..." : "LOG IN"}
+                    {state.isLoading ? "Loding..." : "LOG IN"}
                 </button>
                 <div className="flex items-start">
                     <div className="w-[50%] border-t mx-1 self-center border-gray-300"></div>
@@ -109,7 +100,6 @@ return (
                     <div className="w-3/6 border-t mx-1 self-center border-gray-300"></div>
                 </div>
                 </form>
-                <div className='w-[46px] h-[46px] mb-3 cursor-pointer flex items-center justify-center rounded-[50%] border-black border-2 hover:border-[#17a2b8] hover:bg-[#17a2b8] text-black fill-current hover:text-white hover:shadow-xl duration-300'><FontAwesomeIcon icon={faGoogle}/></div>
                 <div className="text-sm font-display font-semibold text-gray-700 text-center">
                     Don't have an account ? <a className="cursor-pointer text-indigo-600 hover:text-indigo-800" href='/signup'>Sign up</a>
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useRecoilValue } from 'recoil';
-import { AuthState } from '../atoms';
+import { AuthState } from '../atoms/authState';
 import { HomePage, Login, Signup } from '../page/PageExport';
 import { PrivateRoute } from './PrivateRoute';
 

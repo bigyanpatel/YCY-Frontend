@@ -1,32 +1,20 @@
 import React from 'react'
 import { useSignupForm, useTogglePassword } from '../../../hooks/hooksExport';
-import { signupHandler } from '../../../features/AuthHandler';
+import { AuthHandler } from '../../../features/AuthHandler';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { AuthState } from '../../../atoms';
-import { useNavigate } from 'react-router-dom';
-import { replace } from 'lodash';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRecoilValue } from 'recoil';
+import { AuthState } from '../../../atoms/authState';
 
 export const Signup = () => {
     const { signupData, signupFormHandler } = useSignupForm();
+    const {signupHandler} = AuthHandler();
     const {
         passwordToggle,
         checkPasswordView,
         confirmPasswordToggle,
         checkConfirmPasswordView,
       } = useTogglePassword();
-    const authData = useRecoilValue(AuthState);
-    const setAuth = useSetRecoilState(AuthState);
-    const navigate = useNavigate();
-
-    const handleSignup = async() =>{
-        const res = await signupHandler(signupData, authData, setAuth);
-        if(res && res.status === 201){
-            navigate('/login', {replace: true})
-        }
-    }
+    const state = useRecoilValue(AuthState);
 
   return (
     <div className='flex p-[15px] my-[50px] justify-center items-center min-h-screen'>
@@ -37,7 +25,7 @@ export const Signup = () => {
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        handleSignup();
+                        signupHandler(signupData);
                     }}
                     className="w-full flex justify-center flex-col"
                 >
@@ -109,7 +97,7 @@ export const Signup = () => {
                         )}
                     </div>
                     <button className="text-[14px] font-bold px-[15px] py-[13px] mt-[22px] mx-[30px] border rounded-[50px] hover:border-[grey] shadow-md duration-300">
-                    {authData.isLoading ? "Loding..." : "CREATE ACCOUNT"}
+                    {state.isLoading ? "Loding..." : "CREATE ACCOUNT"}
                     </button>
                     <div className="flex items-start">
                         <div className="w-[50%] border-t mx-1 self-center border-gray-300"></div>
@@ -119,7 +107,6 @@ export const Signup = () => {
                         <div className="w-3/6 border-t mx-1 self-center border-gray-300"></div>
                     </div>
                 </form>
-                <div className='w-[46px] h-[46px] mb-3 cursor-pointer flex items-center justify-center rounded-[50%] border-black border-2 hover:border-[#17a2b8] hover:bg-[#17a2b8] text-black fill-current hover:text-white hover:shadow-xl duration-300'><FontAwesomeIcon icon={faGoogle}/></div>
                 <div className="text-sm font-display font-semibold text-gray-700 text-center">
                     Already have an account ? <a className="cursor-pointer text-indigo-600 hover:text-indigo-800" href='/login'>Log In</a>
                 </div>

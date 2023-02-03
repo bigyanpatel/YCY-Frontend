@@ -1,7 +1,7 @@
 import { Avatar } from '@mui/material';
 import React from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { AuthState } from '../../atoms';
+import { AuthState } from '../../atoms/authState';
 import { modalState, modalTypeState, PostmodalState, postModalTypeState } from '../../atoms/modalAtom'
 import { stringAvatar } from '../../constants';
 
