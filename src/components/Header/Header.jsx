@@ -5,7 +5,10 @@ import { HomeIcon, MagnifyingGlassIcon, QuestionMarkCircleIcon, UserCircleIcon }
 import { CgNotes } from "react-icons/cg";
 import ycylogo from '../../assets/Images/ycylogo.png'
 import { SidebarData } from './SidebarData';
-
+import { useSetRecoilState } from 'recoil';
+import { AuthState } from '../../atoms';
+import { useNavigate } from 'react-router-dom';
+import { logoutHandler } from '../../features/AuthHandler';
 
 function Header() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -18,6 +21,14 @@ function Header() {
     const toggleSidebar = () => {
         setSidebarVisible(!sidebarVisible);
     };
+
+    const setAuth = useSetRecoilState(AuthState);
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        logoutHandler(setAuth)
+        navigate('./login')
+    }
 
 
     return (
@@ -37,25 +48,26 @@ function Header() {
                     <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300"><UserCircleIcon className='w-8 h-8 ' /></div>
                     <div className=" p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300"><QuestionMarkCircleIcon className='w-8 h-8 ' /></div>
                     <div className="p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[20px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300"><CgNotes className='w-8 h-8 ' /></div>
-
-                    <div className='p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[25px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300  '>< UserCircleIcon className='w-8 h-8' onClick={toggleSidebar} />
-                        {screenWidth <= 768 && sidebarVisible && (
-                            <div className="h-[100vh] w-[300px] max-w-[360px] z-[100] absolute bg-[#ffffff] left-0 top-0  flex flex-col ">
-                                <ul className="h-auto w-[100%] p-0 ">
-                                    {SidebarData.map((val, key) => {
-                                        return (
-                                            <li className="w-[100%] h-[80px]  list-none m-0 flex flex-row justify-center items-center cursor-pointer hover:bg-[#eee] duration-300 #id.active:bg-[#eee]" key={key} id={window.location.pathname === val.link ? "active" : ""} onClick={() => { window.location.pathname = val.link }} >
-                                                <div className="flex-[30%] grid place-items-center">{val.icon}</div><div className="text-[#000000] flex-[70%] duration-300">{val.title}</div>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        )}
-                    </div>
                 </div>
-            </div>
+
+                <div className='p-[5px] hover:bg-[#eee] cursor-pointer rounded-md ml-[25px] mr-[20px] max-[450px]:mr-0 text-[#ec6b25] hover:text-black duration-300  ' onClick={handleClick}>< UserCircleIcon className='w-8 h-8' onClick={toggleSidebar} />
+                    {screenWidth <= 768 && sidebarVisible && (
+                        <div className="h-[100vh] w-[300px] max-w-[360px] z-[100] absolute bg-[#ffffff] left-0 top-0  flex flex-col ">
+                            <ul className="h-auto w-[100%] p-0 ">
+                                {SidebarData.map((val, key) => {
+                                    return (
+                                        <li className="w-[100%] h-[80px]  list-none m-0 flex flex-row justify-center items-center cursor-pointer hover:bg-[#eee] duration-300 #id.active:bg-[#eee]" key={key} id={window.location.pathname === val.link ? "active" : ""} onClick={() => { window.location.pathname = val.link }} >
+                                            <div className="flex-[30%] grid place-items-center">{val.icon}</div><div className="text-[#000000] flex-[70%] duration-300">{val.title}</div>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                    )}
+                </div>
+            </div >
         </div >
+
     )
 }
 

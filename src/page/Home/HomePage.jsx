@@ -39,9 +39,10 @@ export const HomePage = () => {
 
 
       </div>
+
+
+
       <Footer />
-
-
     </>
   )
 }
