@@ -28,3 +28,18 @@
 input:-webkit-autofill {
   -webkit-background-clip: text;
 }
+
+html::-webkit-scrollbar{
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track{
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+html::-webkit-scrollbar-thumb{
+  border-radius: 8px;
+  background-color: #ff592bbf;
+}
+

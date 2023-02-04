@@ -1,12 +1,16 @@
 import React from 'react'
 import InputBox from './InputBox'
-import Post from './Post'
+import { PostCard } from './PostCard'
 
 function Feed() {
     return (
-        <div className="flex  space-y-6  flex-col flex-[0.6] max-[800px]:flex-[1]">
+        <div className="flex flex-col items-center justify-center w-screen">
             <InputBox />
-            {/* <Post /> */}
+            <PostCard/>
+            <PostCard/>
+            <PostCard/>
+            <PostCard/>
+            <PostCard/>
         </div>
     )
 }

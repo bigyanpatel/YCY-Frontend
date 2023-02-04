@@ -15,7 +15,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <div className=" w-[100%]  min-w-fit">
+      <div className=" w-[100%]">
         <Header />
       </div>
 

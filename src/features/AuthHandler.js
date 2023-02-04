@@ -1,7 +1,6 @@
-import React from "react";
 import { loginService, signUpService } from "../services/authServices";
 import toast from "react-hot-toast";
-import getCookie, { toastProps } from "../constants";
+import { toastProps } from "../constants";
 import { useRecoilState } from "recoil";
 import { AuthState } from "../atoms/authState";
 import { useNavigate } from "react-router";
@@ -15,12 +14,12 @@ export const AuthHandler = () => {
       setAuthState({ ...authState, isLoading: true })
       const res = await loginService(loginData);
       if (res.status === 200) {
-        setAuthState({ ...authState, isLoading: false, token: getCookie('jwt'), user: res.data.data })
+        setAuthState({ ...authState, isLoading: false, token: res.data.token, user: res.data.user })
         localStorage.setItem(
           "authData",
           JSON.stringify({
-            token: getCookie('jwt'),
-            user: res.data.data,
+            token: res.data.token,
+            user: res.data.user,
           })
         );
         toast.success(res.data.message, toastProps);

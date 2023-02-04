@@ -13,7 +13,7 @@ function InputBox() {
     const state = useRecoilValue(AuthState)
 
     return (
-        <div className="flex flex-col  border-[#ec6b25] hover:border-hovercolor bg-[#ffffff] rounded-md max-w-[700px] max-[800px]:max-w-[900px]">
+        <div className="flex flex-col  border-[#ec6b25] hover:border-hovercolor bg-[#ffffff] rounded-md w-[100vw] xs:w-[560px]">
             <div className="flex items-center mt-2 ml-2">
                 <Avatar className="h-[45px] w-[30px]" {...stringAvatar(state.user.name)}/>
                 <button onClick={() => {
